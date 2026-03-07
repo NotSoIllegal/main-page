@@ -1,9 +1,305 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Under Construction</title>
-    </head>
-    <body>
-        <h2>Under Construction</h2>
-    </body>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotSoIllegal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --accent-raspberry: #e3005c;
+            --accent-red: #ff1a1a;
+            --text-secondary: #888888;
+            --border-color: #333333;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: #fff;
+        }
+
+        .bg-primary-custom {
+            background: rgba(10, 10, 10, 0.9) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #fff;
+        }
+
+        .logo {
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-raspberry), var(--accent-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.1rem;
+        }
+
+        .avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 24px;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+            background: var(--bg-card);
+            transition: all 0.4s ease;
+        }
+
+        .avatar:hover {
+            border-color: var(--accent-raspberry);
+            box-shadow: 0 0 40px rgba(227, 0, 92, 0.3);
+            transform: scale(1.02);
+        }
+
+        .profile-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, var(--accent-raspberry));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .moscow-time {
+            font-family: 'Consolas', monospace;
+            font-weight: 600;
+        }
+
+        .skill-card,
+        .utility-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            height: 100%;
+        }
+
+        .skill-card:hover,
+        .utility-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-raspberry);
+            box-shadow: 0 20px 40px rgba(227, 0, 92, 0.15);
+        }
+
+        .skill-card:hover .skill-name,
+        .utility-card:hover .utility-name {
+            color: var(--accent-raspberry);
+        }
+
+        .skill-name,
+        .utility-name {
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            font-weight: 500;
+            padding: 0.875rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-raspberry), var(--accent-red));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .contact-btn:hover {
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(227, 0, 92, 0.3);
+            color: #fff;
+        }
+
+        .contact-btn:hover::before {
+            opacity: 1;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-raspberry), var(--accent-red));
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-name {
+                font-size: 2rem;
+            }
+
+            .avatar {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .contact-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header fixed-top bg-primary-custom border-bottom border-secondary">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="logo text-decoration-none" href="#">NotSoIllegal</a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav gap-3">
+                        <li class="nav-item">
+                            <a href="#skills" class="nav-link">Навыки</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#utilities" class="nav-link">Утилиты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#contacts" class="nav-link">Контакты</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container" style="padding-top: 5rem;">
+        <!-- Profile Section -->
+        <section class="profile py-5 mb-5">
+            <div class="row align-items-center g-4">
+                <div class="col-auto">
+                    <img src="https://avatars.githubusercontent.com/u/198163554?v=4"
+                         alt="Аватар"
+                         class="avatar">
+                </div>
+                <div class="col">
+                    <h1 class="profile-name mb-2">NotSoIllegal</h1>
+                    <p class="text-secondary mb-2">Разработчик | PHP - Python - JavaScript</p>
+                    <div class="moscow-time text-secondary">
+                        <span class="text-danger">Алтай:</span>
+                        <span class="time-value text-white">--:--:--</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills mb-5" id="skills">
+            <h2 class="section-title">Навыки</h2>
+            <div class="row g-3">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="skill-card">
+                        <span class="skill-name">PHP</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="skill-card">
+                        <span class="skill-name">Python</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="skill-card">
+                        <span class="skill-name">JavaScript</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="skill-card">
+                        <span class="skill-name">Lua</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Utilities Section -->
+        <section class="utilities mb-5" id="utilities">
+            <h2 class="section-title">Утилиты</h2>
+            <div class="row g-3">
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="utility-card">
+                        <span class="utility-name">Tkinter</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="utility-card">
+                        <span class="utility-name">Qt</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="utility-card">
+                        <span class="utility-name">Electron</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacts Section -->
+        <section class="contacts mb-5" id="contacts">
+            <h2 class="section-title">Контакты</h2>
+            <div class="d-flex flex-wrap gap-2">
+                <label>Not available for now</label>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-4 border-top border-secondary">
+        <div class="container text-center">
+            <p class="text-secondary mb-0">
+                Build with
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bootstrap-fill" viewBox="0 0 16 16">
+                    <path d="M6.375 7.125V4.658h1.78c.973 0 1.542.457 1.542 1.237 0 .802-.604 1.23-1.764 1.23zm0 3.762h1.898c1.184 0 1.81-.48 1.81-1.377 0-.885-.65-1.348-1.886-1.348H6.375z"/>
+                    <path d="M4.002 0a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4V4a4 4 0 0 0-4-4zm1.06 12V3.545h3.399c1.587 0 2.543.809 2.543 2.11 0 .884-.65 1.675-1.483 1.816v.1c1.143.117 1.904.931 1.904 2.033 0 1.488-1.084 2.396-2.888 2.396z"/>
+                </svg>
+                <a></a>Bootstrap
+            </p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>
